@@ -1,0 +1,149 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package br.com.maxmiller.util;
+
+import java.text.DecimalFormat;
+
+/**
+ *
+ * @author max
+ */
+public class Validacao {
+
+     public static boolean validarCNPJCPF(final String CNPJ_CPF) {
+
+        if (CNPJ_CPF.length() == 11) { //CPF
+
+            int acumulador1 = 0;
+            int acumulador2 = 0;
+            int resto = 0;
+
+            StringBuffer resultado = new StringBuffer();
+
+            String digitoVerificadorCPF = CNPJ_CPF.substring((CNPJ_CPF.length() - 2),
+                    CNPJ_CPF.length());
+
+            for (int i = 1; i < (CNPJ_CPF.length() - 1); i++) {
+                acumulador1 += (11 - i) * Integer.valueOf(CNPJ_CPF.substring((i - 1), i));
+                acumulador2 += (12 - i) * Integer.valueOf(CNPJ_CPF.substring((i - 1), i));
+            }
+
+            resto = acumulador1 % 11;
+
+            if (resto < 2) {
+                acumulador2 += 2;
+                resultado.append(2);
+            } else {
+                acumulador2 += 2 * (11 - resto);
+                resultado.append((11 - resto));
+            }
+
+            resto = acumulador2 % 11;
+
+            if (resto < 2) {
+                resultado.append(0);
+            } else {
+                resultado.append((11 - resto));
+            }
+
+            return resultado.toString().equals(digitoVerificadorCPF);
+        } else if (CNPJ_CPF.length() == 14) { //CNPJ
+
+            int acumulador = 0;
+            int digito = 0;
+            StringBuffer CNPJ = new StringBuffer();
+            char[] CNPJCharArray = CNPJ_CPF.toCharArray();
+
+            CNPJ.append(CNPJ_CPF.substring(0, 12));
+
+            for (int i = 0; i < 4; i++) {
+                if (((CNPJCharArray[i] - 48) >= 0)
+                        && ((CNPJCharArray[i] - 48) <= 9)) {
+                    acumulador += (CNPJCharArray[i] - 48) * (6 - (i + 1));
+                }
+            }
+
+            for (int i = 0; i < 8; i++) {
+                if (((CNPJCharArray[i + 4] - 48) >= 0)
+                        && ((CNPJCharArray[i + 4] - 48) <= 9)) {
+                    acumulador += (CNPJCharArray[i + 4] - 48) * (10 - (i + 1));
+                }
+            }
+
+            digito = 11 - (acumulador % 11);
+
+            CNPJ.append((digito == 10 || digito == 11) ? "0" : digito);
+
+            acumulador = 0;
+
+            for (int i = 0; i < 5; i++) {
+                if (((CNPJCharArray[i] - 48) >= 0)
+                        && ((CNPJCharArray[i] - 48) <= 9)) {
+                    acumulador += (CNPJCharArray[i] - 48) * (7 - (i + 1));
+                }
+            }
+
+            for (int i = 0; i < 8; i++) {
+                if (((CNPJCharArray[i + 5] - 48) >= 0)
+                        && ((CNPJCharArray[i + 5] - 48) <= 9)) {
+                    acumulador += (CNPJCharArray[i + 5] - 48) * (10 - (i + 1));
+                }
+            }
+
+            digito = 11 - (acumulador % 11);
+
+            CNPJ.append((digito == 10 || digito == 11) ? "0" : digito);
+
+            return CNPJ.toString().equals(CNPJ_CPF);
+        }
+
+        return false;
+    }
+
+     public  static String formataNumeros(String valor, int nDecimais) {
+       
+        String result = new String("");
+        if (valor == null) {
+            result = "0";
+        } else {
+            result = soNumeros(valor);
+        }
+        String casasDecimais = new String("");
+
+        if (result.length() <= nDecimais) {
+            while (result.length() <= nDecimais) {
+                result = "0" + result;
+            }
+        }
+        result = result.substring(0, result.length() - nDecimais) + "." + result.substring(result.length() - nDecimais);
+
+        for (int i = 0; i < nDecimais; i++) {
+            casasDecimais = casasDecimais + "0";
+        }
+
+        DecimalFormat a;
+        if (nDecimais > 0) {
+            a = new DecimalFormat("###,###,##0." + casasDecimais);
+        } else {
+            a = new DecimalFormat("###,###,##0");
+        }
+
+        result = a.format(Double.parseDouble(result));
+        result = "R$ "+result;
+        return result;
+    }
+     private static String soNumeros(String valor) {
+        char[] array = valor.toCharArray();
+        StringBuffer str = new StringBuffer();
+        for (Character c : array) {
+            if (Character.isDigit(c)) {
+                str.append(c);
+            }
+        }
+        return str.toString();
+    }
+
+}

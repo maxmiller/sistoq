@@ -1,0 +1,108 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package br.com.maxmiller.dao;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+/**
+ *
+ * @author Max
+ */
+public class HibernateUtils {
+
+    private static EntityManagerFactory emf;
+    private static String username;
+    private static String password;
+    private static String url;
+    private static String driver_class;
+    private static String provider_class;
+    private static String show_sql;
+    private static boolean arquivoExiste = false;
+    private static String endereco = null;
+
+    public static EntityManager getEntityManager() {
+        if (emf == null) {
+            emf = createEntityManagerFactory();
+        }
+        return emf.createEntityManager();
+    }
+
+    private static void initProperties() {
+        //logger.info("Initializing properties....");
+        endereco ="C://sistoq//conf.ini";
+        arquivoExiste = new File(endereco).exists();
+        if (!arquivoExiste) {
+            endereco = "//sistoq//conf.ini";
+            arquivoExiste = new File(endereco).exists();
+        }
+        if (arquivoExiste) {
+            Properties props = new Properties();
+            FileInputStream in;
+
+            try {
+
+                in = new FileInputStream(endereco);
+                //in.
+                props.load(in);
+                in.close();
+                username = props.getProperty("username");
+                password = props.getProperty("password");
+                url = props.getProperty("url");
+                driver_class = props.getProperty("driver_class");
+                provider_class = props.getProperty("provider_class");
+                show_sql = props.getProperty("show_sql");
+
+
+            } catch (FileNotFoundException e) {
+                //  logger.error("File 'props.properties' not found !", e);
+                e.printStackTrace();
+            } catch (IOException e) {
+
+
+                //   logger.error("File 'props.properties' not found !", e);
+                e.printStackTrace();
+            }
+
+        }
+    }
+//Criando meu entityManagerFactory
+
+    public static EntityManagerFactory createEntityManagerFactory() {
+
+        initProperties();
+        if (emf == null) {
+            //   logger.info("Appling properties to persistence....");
+            if (arquivoExiste) {
+                Map<String, Object> configOverrides = new HashMap<String, Object>();
+                configOverrides.put("hibernate.connection.username", username.trim());
+                configOverrides.put("hibernate.connection.password", password.trim());
+                configOverrides.put("hibernate.connection.url", url.trim());
+                configOverrides.put("hibernate.connection.driver_class",
+                        driver_class.trim());
+                configOverrides.put("hibernate.provider_class", provider_class.trim());
+                configOverrides.put("hibernate.show_sql", show_sql.trim());
+
+
+                //  logger.info("Creating Entity Manager Factory....");
+                return emf = Persistence.createEntityManagerFactory("sistoqPU",
+                        configOverrides);
+            } else {
+                return emf = Persistence.createEntityManagerFactory("sistoqPU");
+            }
+        } else {
+
+            return emf;
+        }
+    }
+}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="50"
+   name=""
+   committed-date="2010-03-30T16:04:01.343750Z"
+   url="http://200.137.1.113:8090/svn/framework/trunk/b2tiframework/src/br/com/b2ti/persistence/generic"
+   last-author="max"
+   kind="dir"
+   uuid="f71e9c89-63b2-d34d-8e1f-5e6a850f8c02"
+   repos="http://200.137.1.113:8090/svn/framework"
+   revision="80"/>
+<entry
+   committed-rev="50"
+   name="Repository.java"
+   text-time="2012-01-22T13:27:56.000000Z"
+   committed-date="2010-03-30T16:04:01.343750Z"
+   checksum="6b3f4179ee0cecb1dbc6d176e4f08d5f"
+   last-author="max"
+   kind="file"
+   prop-time="2012-01-22T13:27:56.000000Z"/>
+<entry
+   committed-rev="3"
+   name="QueryList.java"
+   text-time="2012-01-22T13:27:56.000000Z"
+   committed-date="2010-03-10T12:24:21.546875Z"
+   checksum="b6a6a5dcd238b109fad2903d98553884"
+   last-author="max"
+   kind="file"
+   prop-time="2012-01-22T13:27:56.000000Z"/>
+<entry
+   committed-rev="13"
+   name="Query.java"
+   text-time="2012-01-22T13:27:56.000000Z"
+   committed-date="2010-03-16T16:10:14.437500Z"
+   checksum="7c269b53385daafde80fd42e6a235ba1"
+   last-author="max"
+   kind="file"
+   prop-time="2012-01-22T13:27:56.000000Z"/>
+<entry
+   committed-rev="3"
+   name="OrderList.java"
+   text-time="2012-01-22T13:27:56.000000Z"
+   committed-date="2010-03-10T12:24:21.546875Z"
+   checksum="bcd82cd4036d63e427ac35a27223dc84"
+   last-author="max"
+   kind="file"
+   prop-time="2012-01-22T13:27:56.000000Z"/>
+</wc-entries>

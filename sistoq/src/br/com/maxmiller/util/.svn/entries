@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="71"
+   name=""
+   committed-date="2010-07-12T19:42:33.000000Z"
+   url="http://200.137.1.113:8090/svn/framework/trunk/b2tiframework/src/br/com/b2ti/util"
+   last-author="max"
+   kind="dir"
+   uuid="f71e9c89-63b2-d34d-8e1f-5e6a850f8c02"
+   repos="http://200.137.1.113:8090/svn/framework"
+   revision="80"/>
+<entry
+   committed-rev="69"
+   name="FieldMonetario.java"
+   text-time="2012-01-22T13:27:56.000000Z"
+   committed-date="2010-07-02T20:48:50.734375Z"
+   checksum="80bdac9c0e9157be5e8333b869e63524"
+   last-author="max"
+   kind="file"
+   prop-time="2012-01-22T13:27:56.000000Z"/>
+<entry
+   committed-rev="52"
+   name="FieldTamanhoFixo.java"
+   text-time="2012-01-22T13:27:56.000000Z"
+   committed-date="2010-03-31T20:50:53.875000Z"
+   checksum="1028f5a790607bec16e214b703b0a0b9"
+   last-author="max"
+   kind="file"
+   prop-time="2012-01-22T13:27:56.000000Z"/>
+<entry
+   committed-rev="68"
+   name="Validacao.java"
+   text-time="2012-01-22T13:27:56.000000Z"
+   committed-date="2010-06-02T18:47:10.089959Z"
+   checksum="baa6f455324b542428b6956b59ea9294"
+   last-author="max"
+   kind="file"
+   prop-time="2012-01-22T13:27:56.000000Z"/>
+<entry
+   committed-rev="53"
+   name="FieldNumerico.java"
+   text-time="2012-01-22T13:27:56.000000Z"
+   committed-date="2010-04-08T19:54:16.702529Z"
+   checksum="4bf7506f1fc874aae68e835934df257a"
+   last-author="max"
+   kind="file"
+   prop-time="2012-01-22T13:27:56.000000Z"/>
+<entry
+   committed-rev="71"
+   name="Data.java"
+   text-time="2012-01-22T13:27:56.000000Z"
+   committed-date="2010-07-12T19:42:33.000000Z"
+   checksum="396a532f9350a6b365ffe810af02a25e"
+   last-author="max"
+   kind="file"
+   prop-time="2012-01-22T13:27:56.000000Z"/>
+<entry
+   committed-rev="3"
+   name="Criptografia.java"
+   text-time="2012-01-22T13:27:56.000000Z"
+   committed-date="2010-03-10T12:24:21.546875Z"
+   checksum="119006e5cf5bf7b12bd0292143d31e77"
+   last-author="max"
+   kind="file"
+   prop-time="2012-01-22T13:27:56.000000Z"/>
+</wc-entries>
